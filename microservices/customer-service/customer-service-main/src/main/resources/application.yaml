@@ -9,7 +9,7 @@ spring:
     consul:
       discovery:
         instance-id: ${spring.application.name}-${random.value}
-        health-check-url: http://host.docker.internal:9192/actuator/health
+        health-check-url: http://host.docker.internal:${server.port}/actuator/health
 
 
   mongodb:

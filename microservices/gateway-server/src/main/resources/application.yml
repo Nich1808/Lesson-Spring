@@ -12,9 +12,32 @@ spring:
     gateway:
       server:
         webflux:
+          default-filters:
+            - SaveSession
           discovery:
             locator:
               enabled: true
+          routes:
+            - id: my-order-service
+              uri: lb://order-service
+              predicates:
+                - Path=/my-orders/**
+              filters:
+                - RewritePath=/my-orders/?(?<segment>.*), /$\{segment}
+#                - SaveSession
+            - id: json-placeholder
+              uri: https://jsonplaceholder.typicode.com
+              predicates:
+                - Path=/jph/**
+              filters:
+                - RewritePath=/jph/?(?<segment>.*), /$\{segment}
+            - id: next.js
+              uri: http://localhost:3000
+              predicates:
+                - Path=/**
+#              filters:
+#                - RewritePath=/?(?<segment>.*), /$\{segment}
+
 
     consul:
       host: localhost

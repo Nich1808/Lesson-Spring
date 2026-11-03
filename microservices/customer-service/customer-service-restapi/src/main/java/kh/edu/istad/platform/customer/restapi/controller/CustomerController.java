@@ -13,6 +13,8 @@ import kh.edu.istad.platform.customer.restapi.dto.CustomerInitiateResponse;
 import kh.edu.istad.platform.customer.restapi.mapper.CustomerWebMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal; // <--- ប្រើប្រាស់ core.annotation
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -28,8 +30,8 @@ public class CustomerController {
     private final CustomerWebMapper customerWebMapper;
 
     @GetMapping
-    public Flux<Customer> findAll(){
-//        return queryCustomerUseCase.findAll().map(customerWebMapper::toResponse);
+    public Flux<Customer> findAll(@AuthenticationPrincipal Jwt jwt){
+        // អ្នកអាចយក Token មកប្រើប្រាស់បាន បើត្រូវការ (ឧ. ពិនិត្យ client id, claims ជាដើម)
         return queryCustomerUseCase.findAll();
     }
 
@@ -38,23 +40,10 @@ public class CustomerController {
         return queryCustomerUseCase.query();
     }
 
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<Customer> create(@RequestBody CreateCustomerRequest request){
         return createCustomerUseCase.create(customerWebMapper.toDomain(request));
     }
-
-//    @ResponseStatus(HttpStatus.CREATED)
-//    @PostMapping
-//    public CustomerInitiateResponse initiateCustomer(
-//            @RequestBody CustomerInitiateRequest customerInitiateRequest
-//            ) {
-//
-//        InitiateCustomerResult result = initiateCustomerUseCase.execute(
-//                customerWebMapper.toCommand(customerInitiateRequest)
-//        );
-//        return customerWebMapper.toResponse(result);
-//    }
 
 }
