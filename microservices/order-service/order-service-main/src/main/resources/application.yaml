@@ -1,5 +1,23 @@
 
 spring:
+
+  security:
+    oauth2:
+      client:
+        registration:
+          auth-server:
+            provider: auth-server
+            client-id: order-service
+            client-secret: order-secret
+            authorization-grant-type: client_credentials
+            client-authentication-method: client_secret_basic
+            scope:
+              - customer.read
+
+        provider:
+          auth-server:
+            issuer-uri: http://localhost:9394
+
   application:
     name: order-service
   profiles:

@@ -4,6 +4,8 @@ plugins {
 }
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
 
     implementation 'kh.edu.istad:istad-common-swagger'
     implementation 'org.springframework.cloud:spring-cloud-starter-consul-discovery'

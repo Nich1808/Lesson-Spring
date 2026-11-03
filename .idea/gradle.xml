@@ -24,6 +24,8 @@
               <build path="$PROJECT_DIR$/microservices" name="microservices">
                 <projects>
                   <project path="$PROJECT_DIR$/microservices" />
+                  <project path="$PROJECT_DIR$/microservices/auth-server" />
+                  <project path="$PROJECT_DIR$/microservices/auth-server/auth-server-main" />
                 </projects>
               </build>
               <build path="$PROJECT_DIR$/microservices/business-service" name="business-service">
@@ -68,6 +70,8 @@
             <option value="$PROJECT_DIR$/istad-common/istad-common-swagger" />
             <option value="$PROJECT_DIR$/istad-common/istad-common-webflux" />
             <option value="$PROJECT_DIR$/microservices" />
+            <option value="$PROJECT_DIR$/microservices/auth-server" />
+            <option value="$PROJECT_DIR$/microservices/auth-server/auth-server-main" />
             <option value="$PROJECT_DIR$/microservices/business-service" />
             <option value="$PROJECT_DIR$/microservices/customer-service" />
             <option value="$PROJECT_DIR$/microservices/customer-service/customer-service-domain" />
@@ -84,6 +88,22 @@
             <option value="$PROJECT_DIR$/microservices/order-service/order-service-domain/order-domain-core" />
             <option value="$PROJECT_DIR$/microservices/order-service/order-service-main" />
             <option value="$PROJECT_DIR$/microservices/order-service/order-service-persistence" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/microservices/auth-server" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/microservices/auth-server" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/microservices/auth-server/auth-server-main" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/microservices/auth-server/auth-server-main" />
           </set>
         </option>
       </GradleProjectSettings>
