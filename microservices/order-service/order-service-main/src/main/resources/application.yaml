@@ -14,7 +14,9 @@ spring:
         watch:
           enabled: true
       discovery:
+        register: true
         health-check-url: http://host.docker.internal:${server.port}/actuator/health
+        health-check-path: /actuator/health
         prefer-ip-address: true
         service-name: order-service
         instance-id: ${spring.application.name}-${random.value}
