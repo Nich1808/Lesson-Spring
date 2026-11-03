@@ -1,0 +1,7 @@
+plugins {
+    alias(libs.plugins.java.common.conventions)
+}
+
+dependencies {
+    api 'kh.edu.istad:istad-common-domain'
+}
